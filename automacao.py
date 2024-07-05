@@ -5,6 +5,7 @@ import shutil
 from zipfile import ZipFile
 import pandas as pd
 import gspread
+from os.path import basename
 
 @dataclass                          # Classe Produto é para criar uma pasta com o mesmo nome da imagem e colocar as imagens dendro
 class Automacao:
@@ -67,6 +68,18 @@ class Automacao:
             if os.listdir(Arquivos) == []:
                 print('Pasta não tem arquivos')
             else:
+                # Salvei o nome das Pastas
                 nomepastas = [var for var in os.listdir(Arquivos)]
                 zip_vai = askdirectory(title=f"Selecione a pasta onde vai os {len(nomepastas)} arquivos zipados.")
-                pass
+                if os.listdir(zip_vai) != []:
+                    print('Esvvazie a pasta onde vai colocar os arquivos zip primeiro')
+                else:
+                    for nomeSubpasta in nomepastas:
+                        os.chdir(zip_vai)
+                        with ZipFile(f'{nomeSubpasta}.7z', 'w') as zip:
+                            caminhoPastaZip = os.path.join(Arquivos,nomeSubpasta)
+                            arqParaZipar = os.listdir(caminhoPastaZip)
+                            for arq in arqParaZipar:
+                                arq2 = os.path.join(caminhoPastaZip,arq)
+                                zip.write(arq2, basename(arq2))
+                                # Falta só enviar os arquivos zipados por whats
