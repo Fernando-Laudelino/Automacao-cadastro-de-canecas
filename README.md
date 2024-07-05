@@ -15,6 +15,7 @@ Vou receber o arquivo compactado com o mesmo nome, salvo a pasta compactada dent
 >>  * Verifico se na pasta de imagens tem imagens, se tiver pego o nome da imagens vou no google planilhas descobro o nome real da imagem,
 criu uma pasta com esse nome e recorto a imagem para dentro dessa pasta com mais duas imagens essenciais.
 >>* ### Segundo_passo
+>>  * Em desenvolvimento 
 >---
 >### Ferramentas e Bibliotecas
 > __Python__
