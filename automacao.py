@@ -6,12 +6,16 @@ from zipfile import ZipFile
 import pandas as pd
 import gspread
 from os.path import basename
+from funcoes import EnviaWhatsapp
+
+
 
 @dataclass                          # Classe Produto é para criar uma pasta com o mesmo nome da imagem e colocar as imagens dendro
 class Automacao:
         nome= []
         caminho= []
         nomepasta = []
+        contato = "https://web.whatsapp.com/send?phone=5511945180799&text= " 
 
 
         def Primeiro_passo(self,):                      # Função primeiro passo verifica se tem imagens na pasta para começar
@@ -72,8 +76,9 @@ class Automacao:
                 nomepastas = [var for var in os.listdir(Arquivos)]
                 zip_vai = askdirectory(title=f"Selecione a pasta onde vai os {len(nomepastas)} arquivos zipados.")
                 if os.listdir(zip_vai) != []:
-                    print('Esvvazie a pasta onde vai colocar os arquivos zip primeiro')
+                    print('Esvazie a pasta onde vai colocar os arquivos zip primeiro')
                 else:
+                    Qnt = 0
                     for nomeSubpasta in nomepastas:
                         os.chdir(zip_vai)
                         with ZipFile(f'{nomeSubpasta}.7z', 'w') as zip:
@@ -82,4 +87,10 @@ class Automacao:
                             for arq in arqParaZipar:
                                 arq2 = os.path.join(caminhoPastaZip,arq)
                                 zip.write(arq2, basename(arq2))
-                                # Falta só enviar os arquivos zipados por whats
+                                Qnt+=1
+                    print('Você compactou {Qnt} agora vamos enviar por Whatsapp')
+                    EnviaWhatsapp(self.contato,zip_vai)
+
+if __name__ == '__main__':
+     play = Automacao()
+     play.Segundo_passo()
