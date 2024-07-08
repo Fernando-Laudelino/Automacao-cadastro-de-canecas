@@ -3,7 +3,7 @@
 Entra no site colocar a imagem na caneca e criar duas imagens e um video da caneca girando em 360 graus, pegar as 2 imagens e o video e colocar dentro da pasta nova criada, compactar e enviar para uma outra pessoa para tratar o tamanho das imagens e adicionar mais 4 imagens novoas.<br>
 Vou receber o arquivo compactado com o mesmo nome, salvo a pasta compactada dentro da pasta e descompacto ela com as 6 imagens e o video, 
 >---
->>##  **classe Automação** 
+>>##  **classe automação** 
 >>
 >> ### Variaveis da Classe.
 >>* ### nome [Lista]
@@ -17,6 +17,31 @@ criu uma pasta com esse nome e recorto a imagem para dentro dessa pasta com mais
 >>* ### Segundo_passo
 >>  * Em desenvolvimento 
 >---
+>>## **agenda.db**
+> > ### descrição
+> > *
+> > ### Campos
+> > * Nome
+> > * telefone
+> ---
+> > ## funções
+> > ### def Arquivos
+> > * 
+> >### def EnviaWhatsapp
+> > * 
+>---
+> >## contatos
+> >### def criarBanco
+> > *
+> >### InserirDados
+> > *
+> >### ExcluirNome
+> > *
+> >### LerDados
+> > *
+> >### BascarNome
+> > *
+> 
 >### Ferramentas e Bibliotecas
 > __Python__
 >~~~Python

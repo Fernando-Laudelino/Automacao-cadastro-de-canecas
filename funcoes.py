@@ -12,7 +12,7 @@ def Contatos(): # Ciar uma lista de contatos para enviar os arquivos de forma ma
     pass
 
 
-def arquivos(diretorio):                                                    # Função para pegar o caminho completo dos arquivos na pasta
+def Arquivos(diretorio):                                                    # Função para pegar o caminho completo dos arquivos na pasta
     caminhoCompleto = []                                                    # Criei uma lista para salvar o caminho completo do arquivo
     for pasta, subpasta, arquivos in os.walk(diretorio):                    # gravo o caminho ate os arquivos que quero
         for nomeArquivo in arquivos:                                        # Pego o nome do arquivo dentro da pasta
@@ -21,7 +21,7 @@ def arquivos(diretorio):                                                    # Fu
 
 def EnviaWhatsapp(contatos,CaminhoCompletoPasta):                                 # Essa função entra no whatsapp para enviar os arquivos
     qntArquivos = 0                                                         # Criei a variavel para contar quantos arquivos foi enviado
-    if arquivos(CaminhoCompletoPasta) == []:                                # Verificação se a lista estiver vazia
+    if Arquivos(CaminhoCompletoPasta) == []:                                # Verificação se a lista estiver vazia
         print('Não tem arquivos na pasta')                                  # Se sim imprime a mensagem não tem arquivos na pasta
         return qntArquivos                                                  # E retorna retorna a variavel quantidade de arquivo igual a zero
     else:                                                                   # Se tiver arquivos dentro da pasta
@@ -30,7 +30,7 @@ def EnviaWhatsapp(contatos,CaminhoCompletoPasta):                               
         while len(driver.find_elements(By.XPATH,'//*[@id="side"]/span/div/div')) <1:    # Espera até esse ele mento aparecer na tela do navegador
             time.sleep(1)                                                                     # Otempo para verificar novamente se o elemento apareceu na tela
         time.sleep(1)                                                                         # Depois que o elemento apareceu aguarde mais 1 segundo para carregar tudo
-        for arquivo in arquivos(CaminhoCompletoPasta):                      # Pego arquivo por arquivo para ser enviado para o contato
+        for arquivo in Arquivos(CaminhoCompletoPasta):                      # Pego arquivo por arquivo para ser enviado para o contato
             time.sleep(3)                                                   # Aguardo 3 segundo
             driver.find_element(By.XPATH,                                   # Clico no botão de anexa arquivos
                                 '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/div/div/span').click()
