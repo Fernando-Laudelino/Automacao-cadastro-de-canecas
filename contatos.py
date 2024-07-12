@@ -1,4 +1,4 @@
-import sqlite3, time, os
+import sqlite3, os
 from contextlib import closing
 
 # Criei um banco de dados com uma tabela chamada contatos para salvar os contatos que vou enviar ps arquivos no whatsapp
@@ -29,18 +29,35 @@ def ExcluirNome(nome):
                 conecao.rollback()
                 print(f'Nome {nome} não encontrado')
 def LerDados():
+    contatos=[]
     with sqlite3.connect('agenda.db') as conecao:
         with closing(conecao.cursor()) as curso:
             curso.execute('select * from cadastro')
-            print('Nome     |     Telefone')
-            print('=======================')
+            '''print(f'{"Nome":^20}|{"Telefone":^13}')
+            print('=================================')'''
             while True:
                 resultado = curso.fetchone()
                 if resultado is None:
                     break
-                print(f'{resultado[0]}          {resultado[1]}')
+                #print(f'{resultado[0]:<20}|{resultado[1]:<13}')
+                contatos.append(resultado)
+    return contatos
+
+
 
 def BascarNome(nome):
+    with sqlite3.connect('agenda.db') as conecao:
+        with closing(conecao.cursor()) as curso:
+            curso.execute(F"select * from cadastro where nome = '{nome}'")
+            print(f'{"Nome":^20}|{"Telefone":^13}')
+            print('=================================')
+            while True:
+                resultado = curso.fetchone()
+                if resultado is None:
+                    break
+                print(f'{resultado[0]:<20}|{resultado[1]:<13}')
+
+def NumeroTell(nome):
     with sqlite3.connect('agenda.db') as conecao:
         with closing(conecao.cursor()) as curso:
             curso.execute(F"select * from cadastro where nome = '{nome}'")
@@ -48,13 +65,12 @@ def BascarNome(nome):
                 resultado = curso.fetchone()
                 if resultado is None:
                     break
-                print(f'{resultado[0]}          {resultado[1]}')
-
-
+                reslt = resultado[1]
+    return reslt
 
 if __name__=='__main__':
     #criarBanco()
     #InserirDados("Fernando","11945922382")
     #LerDados()
     #ExcluirNome('Fernando')
-    BascarNome('Fernando')
+    print(NumeroTell('Renan'))

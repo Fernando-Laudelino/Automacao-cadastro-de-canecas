@@ -42,7 +42,7 @@ def EnviaWhatsapp(contatos,CaminhoCompletoPasta):                               
         time.sleep(5)                                                       # Aguardo 5 segundo
         return qntArquivos                                                  # Retorno a variavel com a quantidade de arquivos enviado
 
-
+                        # Depois de enviar os arquivos mudar o nome dos arquivos para enviados ou OK
 if __name__ =='__main__':
    
 
