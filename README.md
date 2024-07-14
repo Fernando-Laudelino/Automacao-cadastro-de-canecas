@@ -44,6 +44,7 @@ e descompactar o arquivo dentro dessa pasta.
 > > ### descrição
 > > * Em andamento
 > > ### Campos
+> > * cliente_id
 > > * Nome
 > > * telefone
 > ---
@@ -70,7 +71,7 @@ e descompactar o arquivo dentro dessa pasta.
 > >### LerDados
 > > * Em andamento
 > >### BascarNome
-> > * Em andamento
+> > * Em andamentodb
 >>## __Bibliotecas__
 >>~~~ Python 
 >>import sqlite3, os
